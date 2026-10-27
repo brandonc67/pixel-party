@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#24110c" />
+  <title>Grandma's Cookie Counter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../../party.css" />
+</head>
+<body>
+  <a class="back-home" href="../../index.html" aria-label="Back to Game Break homepage">← Game Break</a>
+  <main class="game-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-dot"></span> GRANDMA'S COOKIE COUNTER</div>
+      <div class="save-state"><span class="save-light"></span> <span id="saveStatus">SAVED LOCALLY</span></div>
+    </header>
+
+    <section class="hero panel">
+      <div class="eyebrow">THE FAMILY RECIPE</div>
+      <h1>Make a batch.<br><em>Make history.</em></h1>
+      <p class="intro">Click the cookie to bake. Spend your cookies on grandmas who bake one more cookie every second. Costs climb by powers of 10.</p>
+      <div class="stats-row">
+        <div><span class="stat-label">COOKIES BAKED</span><strong id="cookieCount">0</strong></div>
+        <div><span class="stat-label">PER SECOND</span><strong id="perSecond">0</strong></div>
+        <div><span class="stat-label">TOTAL CLICKS</span><strong id="clickCount">0</strong></div>
+      </div>
+    </section>
+
+    <section class="play-area">
+      <div class="cookie-zone panel">
+        <div class="counter-label">CURRENT BATCH</div>
+        <div id="clickBurst" class="click-burst" aria-live="polite"></div>
+        <button id="cookieButton" class="cookie-button" aria-label="Bake one cookie">
+          <span class="cookie-shadow"></span>
+          <span class="cookie-shape"><span class="chip c1"></span><span class="chip c2"></span><span class="chip c3"></span><span class="chip c4"></span><span class="chip c5"></span><span class="chip c6"></span></span>
+        </button>
+        <div class="click-hint">CLICK TO BAKE <span>•</span> +1 COOKIE</div>
+      </div>
+
+      <aside class="shop panel">
+        <div class="shop-heading">
+          <div><div class="eyebrow">THE AUTOMATION LADDER</div><h2>Hire a grandma</h2></div>
+          <span class="level-badge" id="grandmaLevel">LV 0</span>
+        </div>
+        <p class="shop-copy">Each grandma adds <strong>+1 cookie / sec</strong>. Every new hire costs the next power of 10.</p>
+        <div class="tier-list" id="tierList"></div>
+      </aside>
+    </section>
+
+    <section class="log panel">
+      <div class="log-title"><span class="eyebrow">BAKER'S LOG</span><button id="resetButton" class="text-button">RESET GAME</button></div>
+      <div id="eventLog" class="event-log"><p><span>NOW</span> Welcome to the kitchen. Your first batch is on you.</p></div>
+    </section>
+    <footer>Small batches become big bakeries. Keep clicking.</footer>
+  </main>
+  <script src="../../party.js"></script><script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pixel Dodge // Game Break</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../party.css">
+</head>
+<body>
+  <a class="back-home" href="../../index.html">← Game Break</a>
+  <main class="shell">
+    <header><div><span class="eyebrow">MINI GAME 01 · REFLEX</span><h1>PIXEL <em>DODGE</em></h1></div><div class="score-box"><span>SCORE</span><strong id="score">0</strong></div><div class="score-box best"><span>BEST</span><strong id="best">0</strong></div></header>
+    <section class="game-panel"><canvas id="game" width="720" height="430" aria-label="Pixel Dodge game area"></canvas><div id="start-screen" class="overlay"><span class="big-icon">◆</span><h2>Keep moving.</h2><p>Dodge the falling sparks for as long as you can.</p><button id="start">START RUN</button><small>Arrow keys / A D to move</small></div><div id="game-over" class="overlay hidden"><span class="big-icon">✦</span><h2>Nice run.</h2><p>You scored <b id="final-score">0</b> points.</p><button id="again">TRY AGAIN</button></div></section>
+    <div class="controls"><span><kbd>←</kbd><kbd>→</kbd> MOVE</span><span>EVERY SECOND = +10</span><span>TIP: STAY CENTERED</span></div>
+  </main>
+  <script src="../../party.js"></script><script src="game.js"></script>
+</body>
+</html>

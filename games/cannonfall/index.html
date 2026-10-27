@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cannonfall // Last Stand</title>
+    <meta name="description" content="A neon wave shooter with an upgrade shop and an overpowered orbital cannon." />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../../party.css" />
+  </head>
+  <body>
+    <a class="back-home" href="../../index.html" aria-label="Back to Game Break homepage">← Game Break</a>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <div class="brand-mark"><span></span><span></span><span></span></div>
+          <div>
+            <p class="eyebrow">NIGHTSHIFT DEFENSE SYSTEMS</p>
+            <h1>CANNONFALL <em>// LAST STAND</em></h1>
+          </div>
+        </div>
+        <div class="topbar-status"><span class="status-dot"></span> LIVE FEED <b id="threat-label">THREAT: LOW</b></div>
+      </header>
+
+      <section class="game-layout">
+        <div class="game-column">
+          <div class="hud-row">
+            <div class="hud-chip"><span class="hud-label">SCORE</span><strong id="score">000000</strong></div>
+            <div class="hud-chip money-chip"><span class="hud-label">MONEY</span><strong id="credits">$120</strong></div>
+            <div class="hud-chip"><span class="hud-label">WAVE</span><strong id="wave">01</strong></div>
+            <div class="hud-chip integrity-chip"><span class="hud-label">BASE INTEGRITY</span><strong id="integrity">100%</strong></div>
+          </div>
+
+          <div class="arena-frame">
+            <canvas id="game" width="960" height="600" aria-label="Cannonfall game arena"></canvas>
+            <div class="arena-scanline"></div>
+            <div id="wave-banner" class="wave-banner"><span>INCOMING</span><strong>WAVE 01</strong></div>
+            <div id="game-over" class="game-over hidden">
+              <p class="eyebrow">DEFENSE NETWORK OFFLINE</p>
+              <h2>THE WALL FELL</h2>
+              <p>You held the line for <b id="final-wave">1</b> waves, scored <b id="final-score">0</b>, and finished with <b id="final-credits">$120</b>.</p>
+              <button id="restart-button" class="primary-button">REBOOT DEFENSE</button>
+            </div>
+          </div>
+
+          <div class="control-strip">
+            <span><kbd>A</kbd><kbd>D</kbd> MOVE</span>
+            <span><kbd>CLICK</kbd> / <kbd>SPACE</kbd> FIRE</span>
+            <span><kbd>E</kbd> ORBital CANNON</span>
+            <span class="control-tip">DESTROY ENEMIES • EARN MONEY • UPGRADE • SURVIVE</span>
+          </div>
+        </div>
+
+        <aside class="shop-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">FIELD ARMORY</p>
+              <h2>UPGRADE SHOP</h2>
+            </div>
+            <span class="shop-badge">ONLINE</span>
+          </div>
+
+          <div class="loadout-card">
+            <div class="loadout-top"><span class="eyebrow">CURRENT LOADOUT</span><span id="level-label">LVL 1</span></div>
+            <h3 id="weapon-name">PULSE RIFLE</h3>
+            <div class="stat-bars">
+              <div><span>DAMAGE</span><i><b id="damage-bar"></b></i></div>
+              <div><span>ROF</span><i><b id="rof-bar"></b></i></div>
+              <div><span>SPREAD</span><i><b id="spread-bar"></b></i></div>
+            </div>
+          </div>
+
+          <div class="shop-items">
+            <button class="shop-item" data-upgrade="damage">
+              <span class="item-icon damage-icon">✦</span>
+              <span class="item-copy"><b>PLASMA CORE</b><small>+ damage per shot</small></span>
+              <span class="price" id="damage-price">$50</span>
+            </button>
+            <button class="shop-item" data-upgrade="rate">
+              <span class="item-icon rate-icon">»</span>
+              <span class="item-copy"><b>QUICKLOADER</b><small>faster fire rate</small></span>
+              <span class="price" id="rate-price">$70</span>
+            </button>
+            <button class="shop-item" data-upgrade="spread">
+              <span class="item-icon spread-icon">⁙</span>
+              <span class="item-copy"><b>TRIPLE ARRAY</b><small>fire extra bolts</small></span>
+              <span class="price" id="spread-price">$120</span>
+            </button>
+          </div>
+
+          <div class="cannon-card">
+            <div class="cannon-header"><div><p class="eyebrow">ULTIMATE WEAPON</p><h3>ORBITAL CANNON</h3></div><span class="cannon-hot">OP</span></div>
+            <p class="cannon-description">A satellite-mounted rail blast. Deletes everything on screen. Because subtlety is overrated.</p>
+            <div class="charge-row"><span>CHARGE</span><strong id="charge-value">0%</strong></div>
+            <div class="charge-track"><i id="charge-bar"></i></div>
+            <button id="cannon-button" class="cannon-button" disabled>CHARGE CANNON <span>E</span></button>
+          </div>
+
+          <div class="feed-card">
+            <div class="feed-title"><span>COMBAT FEED</span><span class="live-pip"></span></div>
+            <div id="feed" class="feed-lines"><p>System online. Hold the line.</p><p>Tip: Cannon charge comes from kills.</p></div>
+          </div>
+        </aside>
+      </section>
+
+      <footer class="footer-note"><span>BUILD 07.31 // SECTOR 09</span><span>ALL SYSTEMS NOMINAL</span></footer>
+    </main>
+    <script src="../../party.js"></script><script src="game.js"></script>
+  </body>
+</html>

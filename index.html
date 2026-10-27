@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A small browser arcade with quick games, daily challenges, and high scores.">
+  <title>Pixel Party // Browser Arcade</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="quest.css">
+  <link rel="stylesheet" href="party.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="Pixel Party home"><span class="logo-mark">✦</span><span>pixel party</span></a>
+    <nav aria-label="Primary navigation">
+      <a href="#arcade">Arcade</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="shop.html">Points shop</a><a class="nav-button" href="#arcade">Pick a game <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero gamified-hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="status-line"><span class="live-pill"><span class="pulse"></span> ARCADE ONLINE</span><span class="season-label">SEASON 01 · BREAK TIME</span></div>
+        <h1 id="hero-title">Choose your<br><em>next adventure.</em></h1>
+        <p class="hero-text">Five games, no account, and something new to chase each day. Pick a favorite, beat your last score, and leave your mark.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#arcade">Choose a game <span>↓</span></a><span class="micro-note">New challenge every day.</span></div>
+      </div>
+      <div class="hero-art" aria-label="Decorative game controller illustration">
+        <div class="sun"></div><div class="doodle doodle-star">✦</div><div class="doodle doodle-zig">〰</div>
+        <div class="controller"><span class="controller-top"></span><span class="dpad"><i></i><b></b></span><span class="button-cluster"><i></i><i></i><i></i><i></i></span><span class="stick one"></span><span class="stick two"></span><span class="controller-line"></span></div>
+        <span class="art-note note-one">pick a lane →</span><span class="art-note note-two">level up!</span>
+      </div>
+    </section>
+
+    <section class="player-dashboard" aria-label="Player progress">
+      <div class="player-id"><div class="avatar" data-party-badge>B</div><div><span class="tiny-label">PLAYER PROFILE</span><strong>Break Runner <i>LVL 04</i></strong></div></div>
+      <div class="xp-block"><div class="xp-label"><span>XP TO NEXT LEVEL</span><b>720 / 1000</b></div><div class="xp-track"><span></span></div></div>
+      <div class="dash-stat"><span class="stat-icon">🔥</span><div><span class="tiny-label">STREAK</span><strong id="streak-count">0 days</strong></div></div>
+      <div class="dash-stat"><span class="stat-icon">🏆</span><div><span class="tiny-label">WINS</span><strong>12 total</strong></div></div>
+    </section>
+
+    <section class="daily-quest" aria-label="Daily quest">
+      <div class="quest-icon">✦</div><div class="quest-copy"><span class="tiny-label" id="quest-kicker">DAILY QUEST · +100 XP</span><h2 id="quest-title">Try something new</h2><p id="quest-copy">Play one of the two fresh mini-games below and add a new badge to your shelf.</p></div><span class="quest-reward">REWARD<br><b>+100 XP</b></span><button class="quest-button" id="claim-quest">Claim today’s XP</button><span class="quest-status" id="quest-status" aria-live="polite"></span>
+    </section>
+
+    <section class="arcade-section" id="arcade" aria-labelledby="arcade-title">
+      <div class="section-heading"><div><p class="kicker">the game shelf</p><h2 id="arcade-title">What are you in the mood for?</h2></div><label class="search"><span>⌕</span><input id="game-search" type="search" placeholder="Find a game" aria-label="Find a game"></label></div>
+      <div class="game-grid" id="game-grid">
+        <article class="game-card featured" data-title="Blast Rivals" data-tags="action arena duel shooting">
+          <div class="card-art blast-art"><span class="art-badge">HOT</span><span class="blast-word">BLAST</span><span class="blast-orb orb-one"></span><span class="blast-orb orb-two"></span><span class="blast-cross">+</span><span class="blast-caption">arena duel</span></div>
+          <div class="card-body"><div class="card-meta"><span class="game-type">Action · Arena</span><span class="players">1–2 players</span></div><h3>Blast Rivals</h3><p>Dash, aim, choose your weapon, and outlast the arena.</p><a class="card-link" href="games/blast-rivals/index.html">Play Blast Rivals <span>↗</span></a></div>
+        </article>
+        <article class="game-card" data-title="Grandma's Cookie Counter" data-tags="clicker idle upgrade cozy">
+          <div class="card-art cookie-art"><span class="recipe-note">fresh from<br>the oven</span><span class="cookie">●</span><span class="cookie-chip c1"></span><span class="cookie-chip c2"></span><span class="cookie-chip c3"></span><span class="steam">〰</span></div>
+          <div class="card-body"><div class="card-meta"><span class="game-type">Idle · Upgrade</span><span class="players">Solo</span></div><h3>Grandma’s Cookie Counter</h3><p>Click a cookie, hire grandmas, and grow the sweetest empire.</p><a class="card-link" href="games/grandmas-cookie/index.html">Start baking <span>↗</span></a></div>
+        </article>
+        <article class="game-card" data-title="Jet Ski Race" data-tags="racing speed water multiplayer">
+          <div class="card-art jetski-art"><span class="wave wave-one"></span><span class="wave wave-two"></span><span class="jetski">▰</span><span class="speed-lines">///</span><span class="race-note">GO<br>FAST!</span></div>
+          <div class="card-body"><div class="card-meta"><span class="game-type">Racing · Speed</span><span class="players">Solo</span></div><h3>Jet Ski Race</h3><p>Hit the water, dodge the buoys, and chase the finish line.</p><a class="card-link" href="https://azgames.io/jetski-race" target="_blank" rel="noopener">Race on AZGames <span>↗</span></a></div>
+        </article>
+        <article class="game-card bonus-card" data-title="Cannonfall Last Stand" data-tags="defense shooter upgrade bonus">
+          <div class="card-art cannon-art"><span class="cannon-sun">✹</span><span class="cannon">▰</span><span class="cannon-copy">LAST<br>STAND</span></div>
+          <div class="card-body"><div class="card-meta"><span class="game-type">Bonus · Defense</span><span class="players">Solo</span></div><h3>Cannonfall // Last Stand</h3><p>Defend the wall, earn money, and build an overpowered cannon.</p><a class="card-link" href="games/cannonfall/index.html">Defend the line <span>↗</span></a></div>
+        </article>
+        <article class="game-card mini-card" data-title="Pixel Dodge" data-tags="arcade reflex quick mini new">
+          <div class="card-art dodge-art"><span class="new-stamp">NEW</span><span class="dodge-grid"></span><span class="dodge-player">◆</span><span class="dodge-enemy enemy-a">✦</span><span class="dodge-enemy enemy-b">✦</span><span class="dodge-title">DODGE<br>MODE</span></div>
+          <div class="card-body"><div class="card-meta"><span class="game-type">Mini · Reflex</span><span class="players">Solo</span></div><h3>Pixel Dodge</h3><p>Move left and right, dodge the falling sparks, and beat your best run.</p><a class="card-link" href="games/pixel-dodge/index.html">Start dodging <span>↗</span></a></div>
+        </article>
+        <article class="game-card mini-card" data-title="Flip Match" data-tags="memory puzzle quick mini new">
+          <div class="card-art memory-art"><span class="new-stamp">NEW</span><span class="memory-card mc-1">?</span><span class="memory-card mc-2">★</span><span class="memory-card mc-3">●</span><span class="memory-card mc-4">★</span><span class="memory-card mc-5">?</span><span class="memory-card mc-6">●</span></div>
+          <div class="card-body"><div class="card-meta"><span class="game-type">Mini · Memory</span><span class="players">Solo</span></div><h3>Flip Match</h3><p>Find all the pairs in as few moves as possible. Your brain is the upgrade.</p><a class="card-link" href="games/flip-match/index.html">Flip the cards <span>↗</span></a></div>
+        </article>
+      </div>
+      <p class="empty-state" id="empty-state" hidden>No games found. Try a different vibe.</p>
+    </section>
+
+    <section class="how-section" id="how-it-works"><div class="how-intro"><p class="kicker">how this place works</p><h2>Pick a game.<br><em>Leave a score.</em></h2></div><div class="steps"><div class="step"><span>01</span><h3>Pick a lane</h3><p>Blast, bake, race, dodge, or match. Choose whatever sounds fun.</p></div><div class="step"><span>02</span><h3>Beat your best</h3><p>Most games save progress or high scores right in this browser.</p></div><div class="step"><span>03</span><h3>Check back tomorrow</h3><p>Your daily quest resets once a day, so there’s always one more thing to try.</p></div></div></section>
+  </main>
+  <footer class="site-footer"><a class="logo" href="#top"><span class="logo-mark">✦</span><span>pixel party</span></a><span>built by classmates, played everywhere</span><span>static arcade · 2026</span></footer>
+  <script src="party.js"></script><script src="script.js"></script>
+</body>
+</html>
