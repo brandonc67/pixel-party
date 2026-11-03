@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hoops 21 // Pixel Party</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../party.css">
+</head>
+<body>
+  <a class="back-home" href="../../index.html">← Pixel Party</a>
+  <main class="hoops-shell">
+    <header class="topbar"><div><span class="eyebrow">PIXEL PARTY · COURT 01</span><h1>HOOPS <em>21</em></h1></div><div class="top-score"><span>FIRST TO</span><strong>21</strong></div><div class="top-score"><span>LEVEL</span><strong id="level">1</strong></div></header>
+    <section class="setup-card" id="setup">
+      <div><span class="eyebrow">CHOOSE YOUR BUILD</span><h2>Pick a position.<br><em>Own the court.</em></h2><p>Bigs rebound and dunk. Guards create space and rain threes.</p></div>
+      <div class="position-grid" id="positions"></div>
+      <button class="primary-button" id="start-game">START GAME <span>→</span></button>
+    </section>
+    <section class="court-wrap hidden" id="court-wrap">
+      <div class="game-hud"><div><span>YOU</span><strong id="player-score">0</strong></div><div class="pos-badge" id="position-label">POINT GUARD</div><div class="possession" id="possession">YOUR BALL</div><div><span>RIVAL</span><strong id="opponent-score">0</strong></div></div>
+      <div class="court-frame"><canvas id="court" width="900" height="520" aria-label="Hoops 21 basketball court"></canvas><div class="meter-panel" id="meter-panel"><span id="meter-label">SHOT METER</span><div class="meter"><i id="meter-zone"></i><b id="meter-cursor"></b></div><small id="meter-help">Press SPACE again in the green</small></div><div class="court-message" id="court-message"></div><div class="game-over hidden" id="game-over"><span class="eyebrow">FINAL BUZZER</span><h2 id="result-title">YOU WIN</h2><p id="result-copy"></p><button class="primary-button" id="restart">PLAY AGAIN</button><a class="secondary-link" href="../../index.html">Back to Pixel Party</a></div></div>
+      <div class="controls"><span><kbd>WASD</kbd> / <kbd>ARROWS</kbd> MOVE</span><span><kbd>SPACE</kbd> SHOOT · TIME IT</span><span>Inside arc = 2 · Outside arc = 3</span></div>
+    </section>
+    <section class="rules" id="rules"><div><span class="eyebrow">HOW TO PLAY</span><h2>Make your<br><em>21 count.</em></h2></div><div class="rule-list"><p><b>01</b><span>Move around your rival and look for space.</span></p><p><b>02</b><span>Tap SPACE to start the meter, then tap it again in green.</span></p><p><b>03</b><span>Close to the hoop? Time the dunk prompt for a powerful finish.</span></p></div></section>
+  </main>
+  <script src="../../party.js"></script><script src="game.js"></script>
+</body>
+</html>
