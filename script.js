@@ -2,6 +2,8 @@ const search = document.querySelector('#game-search');
 const cards = [...document.querySelectorAll('.game-card')];
 const empty = document.querySelector('#empty-state');
 
+const storageGet = key => { try { return localStorage.getItem(key); } catch (_) { return null; } };
+const storageSet = (key, value) => { try { localStorage.setItem(key, value); } catch (_) {} };
 const today = new Date();
 const localDateKey = date => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 const dayKey = localDateKey(today);
@@ -16,12 +18,12 @@ const quests = [
 ];
 
 function updateReturnLoop() {
-  const savedLastVisit = localStorage.getItem('gameBreakLastVisit');
-  let streak = Number(localStorage.getItem('gameBreakStreak') || 0);
+  const savedLastVisit = storageGet('gameBreakLastVisit');
+  let streak = Number(storageGet('gameBreakStreak') || 0);
   if (savedLastVisit !== dayKey) {
     streak = savedLastVisit === yesterdayKey ? streak + 1 : 1;
-    localStorage.setItem('gameBreakStreak', streak);
-    localStorage.setItem('gameBreakLastVisit', dayKey);
+    storageSet('gameBreakStreak', streak);
+    storageSet('gameBreakLastVisit', dayKey);
   }
 
   const streakCount = document.querySelector('#streak-count');
@@ -31,7 +33,7 @@ function updateReturnLoop() {
   const claimButton = document.querySelector('#claim-quest');
   const questStatus = document.querySelector('#quest-status');
   const quest = quests[today.getDay() % quests.length];
-  const claimed = localStorage.getItem('gameBreakQuestClaimed') === dayKey;
+  const claimed = storageGet('gameBreakQuestClaimed') === dayKey;
 
   if (streakCount) streakCount.textContent = `${streak} day${streak === 1 ? '' : 's'}`;
   if (questKicker) questKicker.textContent = quest[0];
@@ -44,7 +46,7 @@ function updateReturnLoop() {
   }
 
   claimButton?.addEventListener('click', () => {
-    localStorage.setItem('gameBreakQuestClaimed', dayKey);
+    storageSet('gameBreakQuestClaimed', dayKey);
     claimButton.disabled = true;
     claimButton.textContent = 'XP claimed ✓';
     questStatus.textContent = 'Nice. Your streak is still alive tomorrow.';

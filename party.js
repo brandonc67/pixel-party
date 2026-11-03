@@ -2,7 +2,7 @@
   const KEY = 'pixelPartyProfile';
   const defaults = { points: 0, purchases: [], theme: 'classic', badge: 'B', multiplier: 1 };
   const read = () => { try { return { ...defaults, ...(JSON.parse(localStorage.getItem(KEY)) || {}) }; } catch (_) { return { ...defaults }; } };
-  const write = profile => localStorage.setItem(KEY, JSON.stringify(profile));
+  const write = profile => { try { localStorage.setItem(KEY, JSON.stringify(profile)); } catch (_) {} };
   function renderWallet() { const wallet = document.querySelector('#party-wallet'); if (wallet) wallet.textContent = `◈ ${read().points} pts`; }
   function applyProfile() { const profile = read(); document.body.dataset.partyTheme = profile.theme; document.body.dataset.partyBadge = profile.badge; document.querySelectorAll('[data-party-points]').forEach(el => { el.textContent = `${profile.points} pts`; }); document.querySelectorAll('[data-party-badge]').forEach(el => { el.textContent = profile.badge; }); renderWallet(); }
   function awardPoints(baseAmount, label = 'Game reward') { const profile = read(); const earned = Math.max(1, Math.round(baseAmount * profile.multiplier)); profile.points += earned; write(profile); renderWallet(); window.dispatchEvent(new CustomEvent('pixelparty:points', { detail: { earned, label, total: profile.points } })); return earned; }
