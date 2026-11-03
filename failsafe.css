@@ -1,0 +1,14 @@
+/* Last-resort layout guard for local-file and GitHub Pages rendering. */
+html,body{display:block!important;min-width:320px;min-height:100%;overflow-x:hidden!important;overflow-y:auto!important}
+body>*{visibility:visible!important}
+.site-header{display:flex!important;visibility:visible!important;position:relative!important;z-index:10!important}
+main#top{display:block!important;visibility:visible!important;position:relative!important;z-index:6!important}
+.hero{display:grid!important;visibility:visible!important}
+.player-dashboard{display:flex!important;visibility:visible!important}
+.daily-quest{display:flex!important;visibility:visible!important}
+.arcade-section{display:block!important;visibility:visible!important}
+.game-grid{display:grid!important;visibility:visible!important}
+.game-card{display:flex!important;visibility:visible!important;opacity:1!important}
+.how-section{display:grid!important;visibility:visible!important}
+.site-footer{display:flex!important;visibility:visible!important;position:relative!important;z-index:6!important}
+.grain{pointer-events:none!important;z-index:0!important}
