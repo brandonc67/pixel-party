@@ -32,13 +32,19 @@ function updateReturnLoop() {
   const questKicker = document.querySelector('#quest-kicker');
   const claimButton = document.querySelector('#claim-quest');
   const questStatus = document.querySelector('#quest-status');
+  const xpValue = document.querySelector('.xp-label b');
+  const xpTrack = document.querySelector('.xp-track span');
   const quest = quests[today.getDay() % quests.length];
   const claimed = storageGet('gameBreakQuestClaimed') === dayKey;
+  const storedXp = Number(storageGet('gameBreakXp') || 720);
+  const xp = Number.isFinite(storedXp) ? Math.min(1000, Math.max(0, storedXp)) : 720;
 
   if (streakCount) streakCount.textContent = `${streak} day${streak === 1 ? '' : 's'}`;
   if (questKicker) questKicker.textContent = quest[0];
   if (questTitle) questTitle.textContent = quest[1];
   if (questCopy) questCopy.textContent = quest[2];
+  if (xpValue) xpValue.textContent = `${xp} / 1000`;
+  if (xpTrack) xpTrack.style.width = `${xp / 1000 * 100}%`;
   if (claimed) {
     claimButton.disabled = true;
     claimButton.textContent = 'XP claimed ✓';
@@ -46,10 +52,15 @@ function updateReturnLoop() {
   }
 
   claimButton?.addEventListener('click', () => {
+    if (storageGet('gameBreakQuestClaimed') === dayKey) return;
+    const nextXp = Math.min(1000, xp + 100);
+    storageSet('gameBreakXp', nextXp);
     storageSet('gameBreakQuestClaimed', dayKey);
     claimButton.disabled = true;
     claimButton.textContent = 'XP claimed ✓';
-    questStatus.textContent = 'Nice. Your streak is still alive tomorrow.';
+    if (xpValue) xpValue.textContent = `${nextXp} / 1000`;
+    if (xpTrack) xpTrack.style.width = `${nextXp / 1000 * 100}%`;
+    questStatus.textContent = 'Daily XP added. Come back tomorrow for another quest.';
   });
 }
 

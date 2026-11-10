@@ -1,1 +1,60 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Claw Machine // Pixel Party</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="../../party.css"><style>.machine-prize{position:absolute;display:grid;place-items:center;width:49px;height:49px;border-radius:50%;font:700 25px Georgia,serif;color:#a03a65;border:3px solid #a25c6e;box-shadow:0 5px 0 #4e8780}.claw{top:5px;transition:left .25s ease,top .45s ease;z-index:3}.claw.lowered{filter:drop-shadow(0 0 12px #fff)}.grabbed-prize{position:absolute;left:50%;bottom:17px;transform:translateX(-50%) scale(0);font:900 54px Georgia,serif;color:#fff;z-index:4;transition:transform .25s}.grabbed-prize.show{transform:translateX(-50%) scale(1)}.claw-controls{display:flex;gap:6px}.claw-controls button{border:0;background:#ffe069;color:#3b1c27;border-radius:5px;padding:11px 12px;font:900 10px Arial;letter-spacing:.5px;cursor:pointer}.claw-controls button:hover{background:#fff4ba}.claw-controls button:disabled{opacity:.45;cursor:not-allowed}.grab-button{background:#8ee2c1!important}.task-link{grid-column:1/-1;text-align:center;color:#fff5e8;font:13px Georgia,serif;text-decoration:none}.prize-shelf{margin-top:50px;border-top:1px solid var(--line);padding-top:25px}.prize-shelf h2{font:700 28px Georgia,serif;margin:8px 0 20px}.shelf-items{display:flex;flex-wrap:wrap;gap:8px}.shelf-items span{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:9px 11px;color:var(--muted);font-size:10px}</style></head><body><a class="back-home" href="../../index.html">← Pixel Party</a><main class="claw-shell"><header><div><span class="eyebrow">REWARD ARCADE HUB</span><h1>CLAW <em>MACHINE</em></h1><p>Complete tasks, earn plays, and grab a prize.</p></div><div class="play-count"><span>PLAYS READY</span><strong id="plays">0</strong></div></header><section class="machine"><div class="machine-top"><span>PIXEL PRIZE CO.</span><span>MOVE · LOWER · GRAB</span></div><div class="glass"><div class="prize-pile" id="prize-pile"></div><div class="claw" id="claw">⌖</div><div class="grabbed-prize" id="grabbed-prize"></div></div><div class="machine-base"><div class="slot-screen" id="machine-message">Finish a task to earn your first play.</div><div class="claw-controls"><button id="move-left" aria-label="Move claw left">←</button><button id="move-right" aria-label="Move claw right">→</button><button id="lower-claw">LOWER</button><button id="grab-claw" class="grab-button">GRAB!</button></div><a class="task-link" href="../../tasks.html">Open Task Board to earn more plays →</a></div></section><section class="claw-help"><p><b>← →</b> Move the claw across the machine.</p><p><b>LOWER</b> drops it toward a prize.</p><p><b>GRAB!</b> uses one earned play.</p></section><section class="prize-shelf"><span class="eyebrow">PRIZE SHELF</span><h2>There is always something to chase.</h2><div class="shelf-items"><span>★ STAR STICKER</span><span>● PINK ORB</span><span>◆ GEM TOKEN</span><span>♥ HEART PLUSH</span><span>✦ GOLDEN STAR</span></div></section></main><script src="../../party.js"></script><script src="game.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Use completed task rewards to play a working claw machine.">
+  <title>Claw Machine // Pixel Party</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../party.css">
+</head>
+<body>
+  <a class="back-home" href="../../index.html">← Pixel Party</a>
+  <main class="claw-shell">
+    <header>
+      <div>
+        <span class="eyebrow">REWARD ARCADE HUB</span>
+        <h1>CLAW <em>MACHINE</em></h1>
+        <p>Complete a task, spend one play, and take home a prize.</p>
+      </div>
+      <div class="play-count" aria-label="Claw plays ready">
+        <span>PLAYS READY</span>
+        <strong id="plays">0</strong>
+      </div>
+    </header>
+
+    <section class="machine" aria-label="Interactive claw machine">
+      <div class="machine-top"><span>PIXEL PRIZE CO.</span><span>MOVE · LOWER · GRAB</span></div>
+      <div class="glass">
+        <div class="prize-pile" id="prize-pile" aria-hidden="true"></div>
+        <div class="claw" id="claw" aria-hidden="true"><span class="claw-cable"></span><span class="claw-head"><i></i><i></i><i></i></span></div>
+        <div class="grabbed-prize" id="grabbed-prize" aria-live="polite"></div>
+      </div>
+      <div class="machine-base">
+        <div class="slot-screen" id="machine-message" role="status" aria-live="polite">Finish a task to earn your first play.</div>
+        <div class="claw-controls" aria-label="Claw controls">
+          <button id="move-left" type="button" aria-label="Move claw left">←</button>
+          <button id="move-right" type="button" aria-label="Move claw right">→</button>
+          <button id="lower-claw" type="button" aria-pressed="false">LOWER</button>
+          <button id="grab-claw" type="button" class="grab-button">GRAB</button>
+        </div>
+        <a class="task-link" href="../../tasks.html">Open the task board to earn more plays →</a>
+      </div>
+    </section>
+
+    <section class="claw-help" aria-label="How to play">
+      <p><b>1</b> Move the claw above the prize you want.</p>
+      <p><b>2</b> Lower the claw, then press GRAB.</p>
+      <p><b>3</b> Each completed task gives you one play.</p>
+    </section>
+
+    <section class="prize-shelf">
+      <span class="eyebrow">PRIZE SHELF</span>
+      <h2>There is always something to chase.</h2>
+      <div class="shelf-items"><span>★ STAR STICKER</span><span>● PINK ORB</span><span>◆ GEM TOKEN</span><span>♥ HEART PLUSH</span><span>✦ GOLDEN STAR</span></div>
+    </section>
+  </main>
+  <script src="../../party.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
